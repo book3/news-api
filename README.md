@@ -9,4 +9,4 @@
 
 ### Here is the test acount:
 #### Email: beks@gmail.com
-#### Password password123
+#### Password: password123

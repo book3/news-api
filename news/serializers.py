@@ -3,11 +3,15 @@ from rest_framework import serializers
 from users.serializers import UserCreationSerializer
 
 class CommentsSerializer(serializers.ModelSerializer):
+    author_name = serializers.SerializerMethodField(read_only=True)
     content = serializers.CharField()
+    created_at=serializers.DateTimeField(read_only=True)
     class Meta:
         model = Comment
-        fields = ['content']
-
+        fields = ['author_name','content','created_at']
+    def get_author_name(self, obj):
+        name = obj.author.username
+        return name
 
 class NewsSerializer(serializers.ModelSerializer):
     author_name = serializers.SerializerMethodField(read_only=True)
